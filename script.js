@@ -17,7 +17,7 @@ promise.then((response, reject) => response.json()).then(data => {
     const completedCourses = user.phase_id;
     const email = user.email;
     const tel = user.tel ? user.tel : 'Not available'; 
-    const aboutMe = `<li> ${user.name} is studying </li> <li>  ${user.course_title} and thier enquiry is : </li> <li>  ${user.enquiry} </li> `
+    const aboutMe = `About Me <li> ${user.name} is studying </li> <li>  ${user.course_title} and thier enquiry is : </li> <li>  ${user.enquiry} </li> `
     const currentCourse = user.course_title;
     return {
         theName,
