@@ -24,19 +24,28 @@
     </head>
     <body>
 
-        <div class="cardContainer">
+        <h1 class="homepage">
+            Loading
+        </h1>
+        <a id ="showModal" class="hide">
+            Show
+        </a>
+        <div class="cardContainer hide">
             <div class="cardItem card">
                 <!-- header information -->
                 <div class="headerContainer">
-                    <div class="headerItem close">
+                    <div id="closeButton" class="headerItem close">
                         <!-- close button -->
                         x
+                    </div>
+                    <div class="tick">
+                        <i class="fas fa-check-circle"></i>
                     </div>
 
                     <div class="break"></div>
 
-                    <div class="headerItem headerPicture">   
-                            <img src="" id="iprofile" alt="profile picture" /> 
+                    <div class="headerItem headerPicture">
+                        <img src="" id="iprofile" alt="profile picture"/>
                     </div>
 
                     <div class="break"></div>
@@ -91,19 +100,19 @@
 
                     <ul class="detailsTitle">
                         Contact details
-                        <li>Email: <b id="email"></b>
+                        <li>Email:
+                            <b id="email"></b>
                         </li>
                         <li>
-                            Tel: <b id="tel"></b>
+                            Tel:
+                            <b id="tel"></b>
                         </li>
                     </ul>
                 </div>
                 <div class="break"></div>
                 <div class="detailsItem">
                     <!-- about me -->
-                    <ul class="detailsTitle" id="aboutMe">
-
-                    </ul>
+                    <ul class="detailsTitle" id="aboutMe"></ul>
                 </div>
             </div>
             <div class="currentCourseContainer">
@@ -130,16 +139,16 @@
                     </div>
 
                     <div class="photoItemItem">
-                        <i class="fas fa-chevron-down"></i>
+                        <i id="galleryButton" class="fas fa-chevron-down"></i>
                     </div>
 
                 </div>
                 <div class="photoItem photoGrid">
                     <!-- gallery -->
                     <div class="mainPic">
-                       <picture>
-                           <img id="imainPic" src="" alt="Main picture" srcset="">
-                       </picture>
+                        <picture>
+                            <img id="imainPic" src="" alt="Main picture" srcset="">
+                        </picture>
                     </div>
                     <div class="bannerPic">
                         <picture><img id="ibannerPic" src="" alt="Banner Picture" srcset=""></picture>
@@ -149,6 +158,10 @@
                     </div>
                     <div class="smallPicTwo">
                         <picture><img id="ismallPicTwo" src="" alt="Small picture two" srcset=""></picture>
+                    </div>
+
+                    <div class="overlay">
+                        <i class="fas fa-chevron-right"></i>
                     </div>
                 </div>
             </div>

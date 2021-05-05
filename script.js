@@ -3,20 +3,22 @@ const URL = 'http://leads.beta.openstudycollege.info/getTopLeads'
 var promise = fetch(URL)
 
 promise.then((response, reject) => response.json()).then(data => {
-    
+
     var random = Math.floor(Math.random() * data.length);
     var user = data[random];
     const theName = user.name;
     const studentStatus = user.studentID
-        ? "Student"
-        : "Employee"
+        ? "Employee"
+        : "Student"
     const id = user.studentID
         ? user.studentID
         : user.id;
     const enStatus = user.status;
     const completedCourses = user.phase_id;
     const email = user.email;
-    const tel = user.tel ? user.tel : 'Not available'; 
+    const tel = user.tel
+        ? user.tel
+        : 'Not available';
     const aboutMe = `About Me <li> ${user.name} is studying </li> <li>  ${user.course_title} and thier enquiry is : </li> <li>  ${user.enquiry} </li> `
     const currentCourse = user.course_title;
     return {
@@ -68,9 +70,8 @@ promise.then((response, reject) => response.json()).then(data => {
         changePhoto(bannerPic, 'ibannerPic')
         changePhoto(smallPicOne, 'ismallPicOne')
         changePhoto(smallPicTwo, 'ismallPicTwo')
-    })
-})
-
+    }).then(showCard)
+}).then(addEvents)
 
 //function to change the card contents
 function changeCard(item, id) {
@@ -80,5 +81,53 @@ function changeCard(item, id) {
 }
 
 function changePhoto(item, id) {
-    document.getElementById(id).src = item 
+    document
+        .getElementById(id)
+        .src = item
+}
+
+function showCard() {
+    document
+        .querySelector('.cardContainer')
+        .classList
+        .remove('hide');
+
+    //hide the loading
+    document
+        .querySelector('.homepage')
+        .classList
+        .add('hide');
+}
+
+function addEvents() {
+    //close button
+    const close = document.getElementById('closeButton');
+    const card = document.querySelector('.cardContainer');
+    const modal = document.querySelector('#showModal');
+    const galleryButton = document.querySelector('.photoItem');
+    const gallery = document.querySelector('.photoGrid'); 
+
+    const icon =  document.querySelector('#galleryButton'); 
+
+    document.addEventListener('click', function (event) {
+        if (event.target === close || event.target === modal) {
+            card
+                .classList
+                .toggle('hide');
+            showModal.classList.toggle('hide'); 
+            
+        }
+
+        if(event.target === galleryButton || event.target === icon){
+
+            gallery.classList.toggle('hide')
+            icon.classList.toggle('fa-chevron-down') //remove down icon
+            icon.classList.toggle('fa-chevron-up') //add up icon
+           
+        } 
+
+
+        //slider button change loading text to show show button
+    })
+
 }
