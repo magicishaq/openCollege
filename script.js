@@ -3,7 +3,7 @@ const URL = 'http://leads.beta.openstudycollege.info/getTopLeads'
 var promise = fetch(URL)
 
 promise.then((response, reject) => response.json()).then(data => {
-    console.log(data)
+    
     var random = Math.floor(Math.random() * data.length);
     var user = data[random];
     const theName = user.name;
@@ -54,6 +54,21 @@ promise.then((response, reject) => response.json()).then(data => {
     changeCard(aboutMe, 'aboutMe')
     changeCard(currentCourse, 'currentCourse')
 
+}).then(() => {
+    const URL = 'https://dog.ceo/api/breeds/image/random/5'
+    //get the picture details
+    fetch(URL).then(data => {
+        return data.json()
+    }).then(({message, status}) => {
+        return message
+    }).then(([profile, mainPic, bannerPic, smallPicOne, smallPicTwo]) => {
+        //change the pictures
+        changePhoto(profile, 'iprofile')
+        changePhoto(mainPic, 'imainPic')
+        changePhoto(bannerPic, 'ibannerPic')
+        changePhoto(smallPicOne, 'ismallPicOne')
+        changePhoto(smallPicTwo, 'ismallPicTwo')
+    })
 })
 
 
@@ -62,4 +77,8 @@ function changeCard(item, id) {
     document
         .getElementById(id)
         .innerHTML = item;
+}
+
+function changePhoto(item, id) {
+    document.getElementById(id).src = item 
 }
